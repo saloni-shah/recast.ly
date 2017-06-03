@@ -18,6 +18,9 @@ class App extends React.Component {
       videos: window.exampleVideoData,
       video: window.exampleVideoData[0]
     };
+    this.onListItemClick = this.onListItemClick.bind(this);
+    this.onSearch = this.onSearch.bind(this);
+    this.renderYoutubeData = this.renderYoutubeData.bind(this);
   }
   
   // componentDidMount() {
@@ -26,11 +29,20 @@ class App extends React.Component {
   // }
   
   onListItemClick(currentVideo) {
-    console.log(currentVideo);
     this.setState({
       video: currentVideo
     });
-    console.log(this.state.video);
+  }
+  
+  onSearch(searchVal){
+    searchYouTube(searchVal, this.renderYoutubeData);
+  }
+  
+
+  renderYoutubeData(videos) {
+    this.setState({
+      videos: videos
+    });
   //now, update css
   }
   
@@ -44,12 +56,12 @@ class App extends React.Component {
     // but instead accessed with `this.props`
     return (
       <div>
-        <Nav />
+        <Nav onSearch={this.onSearch}/>
         <div className="col-md-7">
          <VideoPlayer video={this.state.video}/>
         </div>
         <div className="col-md-5" ref="myTextInput">
-         <VideoList videos={this.state.videos}/>
+         <VideoList videos={this.state.videos} onListItemClick={this.onListItemClick}/>
         </div>
       </div>
     );
