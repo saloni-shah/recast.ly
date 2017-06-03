@@ -34,20 +34,16 @@ class App extends React.Component {
     });
   }
   
-  onSearch(searchVal){
+  onSearch(searchVal) {
     searchYouTube(searchVal, this.renderYoutubeData);
   }
-  
 
   renderYoutubeData(videos) {
     this.setState({
       videos: videos
     });
-  //now, update css
   }
-  
-  
-  
+
   render() {
     var style = {
       fontWeight: this.state.done ? 'bold' : ''
@@ -71,4 +67,3 @@ class App extends React.Component {
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
 window.App = App;
-let app = new App();

@@ -7,11 +7,10 @@ var searchYouTube = (searchVal, callback) => {
       key: YOUTUBE_API_KEY,
       q: searchVal,
       part: 'snippet',
-      maxResults:5
+      maxResults: 5
     },
     videoEmbeddable: 'true',
-    success: function(data){
-      //console.log(data.items);
+    success: function(data) {
       callback(data.items);
       console.log('YouTube: Recieved message');
     },
